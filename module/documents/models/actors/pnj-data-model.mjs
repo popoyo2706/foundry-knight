@@ -940,16 +940,12 @@ export class PNJDataModel extends foundry.abstract.TypeDataModel {
 
     #defenses() {
         const defenses = ['defense', 'reaction'];
+        const sante = calculSante(this);
+        this.sante.value = sante;
+        this.sante.max = sante;
 
         Object.defineProperty(this.reaction.bonus, 'machine', {
             value: calculReaction(this),
-            writable:true,
-            enumerable:true,
-            configurable:true
-        });
-
-        Object.defineProperty(this.sante, 'base', {
-            value: calculSante(this),
             writable:true,
             enumerable:true,
             configurable:true
