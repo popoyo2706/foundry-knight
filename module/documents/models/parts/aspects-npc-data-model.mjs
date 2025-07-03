@@ -46,3 +46,22 @@ export class AspectsNPCDataModel extends foundry.abstract.DataModel {
     }
   }
 }
+
+
+function moitieArrondiSuperieur(entier)
+{
+  return ((entier - (entier % 2)) / 2) + (entier % 2);
+}
+
+export function calculDefense(element) {
+  return moitieArrondiSuperieur(element.aspects['bete'].value) + element.aspect.masque.mineur + element.aspect.masque.majeur;
+}
+
+export function calculReaction(element) {
+  return moitieArrondiSuperieur(element.aspects['machine'].value) + element.aspect.machine.mineur + element.aspect.machine.majeur;
+}
+
+export function calculSante(element)
+{
+  return moitieArrondiSuperieur(element.aspects['chair'].value);
+}

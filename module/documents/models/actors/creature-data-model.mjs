@@ -1,4 +1,4 @@
-import { AspectsNPCDataModel } from '../parts/aspects-npc-data-model.mjs';
+import { AspectsNPCDataModel, calculDefense, calculReaction } from '../parts/aspects-npc-data-model.mjs';
 import { ArmesImproviseesDataModel } from '../parts/armesimprovisees-data-model.mjs';
 import { DefensesDataModel } from '../parts/defenses-data-model.mjs';
 import { InitiativeDataModel } from '../parts/initiative-data-model.mjs';
@@ -468,18 +468,16 @@ export class CreatureDataModel extends foundry.abstract.TypeDataModel {
 
   #defenses() {
       const defenses = ['defense', 'reaction'];
-      const machineAE = this.aspect.machine.mineur+this.aspect.machine.majeur;
-      const masqueAE = this.aspect.masque.mineur+this.aspect.masque.majeur;
 
       Object.defineProperty(this.reaction.bonus, 'machine', {
-        value: machineAE,
+        value: calculReaction(this),
         writable:true,
         enumerable:true,
         configurable:true
       });
 
       Object.defineProperty(this.defense.bonus, 'masque', {
-        value: masqueAE,
+        value: calculDefense(this),
         writable:true,
         enumerable:true,
         configurable:true

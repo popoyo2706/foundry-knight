@@ -1,4 +1,4 @@
-import { AspectsNPCDataModel } from '../parts/aspects-npc-data-model.mjs';
+import { AspectsNPCDataModel, calculDefense, calculReaction } from '../parts/aspects-npc-data-model.mjs';
 import { DefensesDataModel } from '../parts/defenses-data-model.mjs';
 import { InitiativeDataModel } from '../parts/initiative-data-model.mjs';
 import { Phase2DataModel } from '../parts/phase2-data-model.mjs';
@@ -166,22 +166,16 @@ export class BandeDataModel extends foundry.abstract.TypeDataModel {
 
     #defenses() {
         const defenses = ['defense', 'reaction'];
-        const bete = this.aspects['bete'].value;
-        const machine = this.aspects['machine'].value;
-        const machineAE = this.aspect.machine.mineur+this.aspect.machine.majeur;
-        const masqueAE = this.aspect.masque.mineur+this.aspect.masque.majeur;
-        const defenseBase = this.#moitieStrict(bete) + masqueAE;
-        const reactionBase = this.#moitieStrict(machine) + machineAE;
 
         Object.defineProperty(this.reaction.bonus, 'machine', {
-          value: reactionBase,
+          value: calculReaction(this),
           writable:true,
           enumerable:true,
           configurable:true
         });
 
         Object.defineProperty(this.defense.bonus, 'masque', {
-          value: defenseBase,
+          value: calculDefense(this),
           writable:true,
           enumerable:true,
           configurable:true
