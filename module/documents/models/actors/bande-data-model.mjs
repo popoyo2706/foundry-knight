@@ -161,12 +161,12 @@ export class BandeDataModel extends foundry.abstract.TypeDataModel {
 
     #moitieStrict(entier) {
         if (entier === undefined || entier === null) return 1;
-        return (entier - (entier % 2)) / 2
+        return ((entier - (entier % 2)) / 2) + (entier % 2)
     }
 
     #defenses() {
         const defenses = ['defense', 'reaction'];
-        const bete = this.aspects['masque'].value;
+        const bete = this.aspects['bete'].value;
         const machine = this.aspects['machine'].value;
         const machineAE = this.aspect.machine.mineur+this.aspect.machine.majeur;
         const masqueAE = this.aspect.masque.mineur+this.aspect.masque.majeur;
