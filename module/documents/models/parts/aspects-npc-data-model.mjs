@@ -63,5 +63,5 @@ export function calculReaction(element) {
 
 export function calculSante(element)
 {
-  return moitieArrondiSuperieur(element.aspects['chair'].value);
+  return moitieArrondiSuperieur(element.aspects['chair'].value) * 6 + 10;
 }

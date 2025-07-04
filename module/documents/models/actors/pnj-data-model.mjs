@@ -943,6 +943,7 @@ export class PNJDataModel extends foundry.abstract.TypeDataModel {
         const sante = calculSante(this);
         this.sante.maximum = sante;
         this.sante.value = sante;
+        console.log(this.sante);
 
         Object.defineProperty(this.reaction.bonus, 'machine', {
             value: calculReaction(this),
