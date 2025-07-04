@@ -65,3 +65,16 @@ export function calculSante(element)
 {
   return moitieArrondiSuperieur(element.aspects['chair'].value) * 6 + 10;
 }
+
+export function misAJourSante(element)
+{
+  const sante = calculSante(element);
+  if (element.sante.max < sante)
+  {
+    element.sante.max = sante;
+  }
+  if (element.sante.value <= 0)
+  {
+    element.sante.value = element.sante.max;
+  }
+}

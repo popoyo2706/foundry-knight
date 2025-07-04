@@ -1,7 +1,7 @@
 import {
   getFlatEffectBonus,
 } from "../../../helpers/common.mjs";
-import { AspectsNPCDataModel, calculDefense, calculReaction, calculSante } from '../parts/aspects-npc-data-model.mjs';
+import { AspectsNPCDataModel, calculDefense, calculReaction, calculSante, misAJourSante } from '../parts/aspects-npc-data-model.mjs';
 import { ArmesImproviseesDataModel } from '../parts/armesimprovisees-data-model.mjs';
 import { GrenadesDataModel } from '../parts/grenades-data-model.mjs';
 import { NodsDataModel } from '../parts/nods-data-model.mjs';
@@ -940,10 +940,7 @@ export class PNJDataModel extends foundry.abstract.TypeDataModel {
 
     #defenses() {
         const defenses = ['defense', 'reaction'];
-        const sante = calculSante(this);
-        this.sante.max = sante;
-        this.sante.value = sante;
-        console.log(this.sante);
+        misAJourSante(this);
 
         Object.defineProperty(this.reaction.bonus, 'machine', {
             value: calculReaction(this),
