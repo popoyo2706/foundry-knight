@@ -72,9 +72,9 @@ export function misAJourSante(element)
   if (element.sante.max < sante)
   {
     element.sante.max = sante;
-  }
-  if (element.sante.value <= 0)
-  {
-    element.sante.value = element.sante.max;
+    if (element.sante.value <= 0)
+    {
+      element.sante.value = element.sante.max;
+    }
   }
 }
