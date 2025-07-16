@@ -45,6 +45,7 @@ export const RegisterSettings = function () {
         config: true,
         default: false,
         type: Boolean,
+        onChange: () => Hooks.call('knightSettingsChange', 'include-capacite2038necromancer')
     });
 
     game.settings.register("knight", "include-capacite2038sorcerer", {
@@ -54,6 +55,7 @@ export const RegisterSettings = function () {
         config: true,
         default: false,
         type: Boolean,
+        onChange: () => Hooks.call('knightSettingsChange', 'include-capacite2038sorcerer')
     });
 
     game.settings.register("knight", "include-capacitecodex", {
@@ -83,6 +85,7 @@ export const RegisterSettings = function () {
         config: true,
         default: false,
         type: Boolean,
+        onChange: () => Hooks.call('knightSettingsChange', 'include-capaciteatlas')
     });
 
     game.settings.register("knight", "systemVersion", {
@@ -108,6 +111,18 @@ export const RegisterSettings = function () {
             }
         }
     });
+
+    game.settings.register("knight", "showLimitedDecription", {
+        name: "KNIGHT.SETTINGS.showLimitedDecription.Label",
+        hint: "KNIGHT.SETTINGS.showLimitedDecription.Hint",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: value => {
+            foundry.utils.debouncedReload();
+        }
+    })
 
     game.settings.register("knight", "codexfm4", {
         name: "KNIGHT.SETTINGS.CODEXFM4.Label",
