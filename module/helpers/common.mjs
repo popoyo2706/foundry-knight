@@ -5088,8 +5088,9 @@ export function effectsGestion(actor, listWithEffect, isPJ=false, onArmor=false)
 
 export function hideShowLimited(actor, html) {
   const data = actor.system;
+  const hasLimitedDescription = game.settings.get("knight","showLimitedDecription");
 
-  const showDescriptionLimited = data?.limited?.showDescriptionLimited ?? true;
+  const showDescriptionLimited = hasLimitedDescription ? true : data?.limited?.showDescriptionLimited ?? false;
   const isLimited = actor.limited;
   const hideShowLimited = $(html.find('div.personnage div.hideShowLimited'));
 

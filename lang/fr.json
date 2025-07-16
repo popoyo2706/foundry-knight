@@ -2552,6 +2552,10 @@
     },
     "SETTINGS":{
       "Default":"Défaut",
+      "showLimitedDecription":{
+        "Label": "Montrer la description limitée",
+        "Hint": "Affiche systématiquement les descriptions limitées pour l'utilisateur qui en a une vue limitée"
+      },
       "ARMURES":{
         "Egide":"Accès à l'Egide",
         "2038": "Capacités des armures de 2038",

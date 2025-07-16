@@ -2551,6 +2551,10 @@
     },
     "SETTINGS":{
       "Default":"Default",
+      "showLimitedDecription":{
+        "Label": "Show limited description",
+        "Hint": "Always show limited description when user has limited view"
+      },
       "ARMURES":{
         "Egide":"Aegis access",
         "2038": "2038 armour abilities",
